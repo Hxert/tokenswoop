@@ -1,0 +1,34 @@
+[Unit]
+Description=TokenSwoop API (%i)
+Wants=network-online.target
+After=network-online.target postgresql@18-main.service redis-server.service
+Requires=postgresql@18-main.service redis-server.service
+
+[Service]
+Type=simple
+User=tokenswoop
+Group=tokenswoop
+WorkingDirectory=/opt/tokenswoop/current
+EnvironmentFile=/etc/tokenswoop/runtime.env
+EnvironmentFile=/etc/tokenswoop/%i.env
+Environment=HOME=/var/lib/tokenswoop
+Environment=GOMEMLIMIT=256MiB
+ExecStart=/opt/tokenswoop/current/bin/api
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=120
+StateDirectory=tokenswoop
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/tokenswoop
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictSUIDSGID=true
+CapabilityBoundingSet=
+LimitNOFILE=65536
+SyslogIdentifier=tokenswoop-api-%i
+
+[Install]
+WantedBy=multi-user.target

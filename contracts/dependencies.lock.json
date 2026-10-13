@@ -1,0 +1,18 @@
+{
+  "foundry": {"version": "1.8.0", "commit": "61ae26af36320d4fa1020f7db53785885e29eeb5"},
+  "solidity": {"version": "0.8.37", "commit": "f401782d"},
+  "openzeppelin": {
+    "version": "5.4.0",
+    "commit": "c64a1edb67b6e3f4a15cca8909c9482ad33a02b0",
+    "archiveSha256": "c22752c549e6adfd52d897c241e014687e0673beabd291fa7ed6469643244ceb"
+  },
+  "forge-std": {
+    "version": "1.9.7",
+    "commit": "77041d2ce690e692d6e03cc812b57d1ddaa4d505",
+    "archiveSha256": "b2dd755f5eb2db5415b11c77d0cc3341571d1420ed61a7bf4b9428a91fc5a562"
+  },
+  "darwin-arm64": {
+    "foundrySha256": "0599b28a19af97c3ae91fab12ad868a1922db7770c4adff6b6d26235862153d0",
+    "solcSha256": "a27396e7732aa52e80ff89ad7bd8a2e46fec2a6dcc4ef20cd16e5e0c502d6821"
+  }
+}

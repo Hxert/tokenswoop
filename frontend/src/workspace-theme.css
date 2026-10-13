@@ -1,0 +1,131 @@
+/* Workspace palette. Landing-page colors are intentionally scoped separately. */
+.console {
+  --c-bg: #10120f;
+  --c-text: #eeeee5;
+  --c-muted: #949b8d;
+  --c-subtle: #849174;
+  --c-label: #b7beae;
+  --c-caption: #99a88a;
+  --c-secondary-text: #c5ceba;
+  --c-panel: #171a15;
+  --c-sidebar: #141711;
+  --c-line: #30362a;
+  --c-line-strong: #49543c;
+  --c-input-bg: #10130f;
+  --c-input-border: #394132;
+  --c-hover: #20271a;
+  --c-active-bg: #28331e;
+  --c-active-line: #36492a;
+  --c-icon-bg: #2a3222;
+  --c-secondary-bg: #242d1d;
+  --c-secondary-hover: #333f29;
+  --c-badge-text: #aab79c;
+  --c-success-bg: #24311b;
+  --c-success-line: #405a2e;
+  --c-warning-text: #e4c68d;
+  --c-warning-line: #5c4b2b;
+  --c-warning-bg: #312a1e;
+  --c-danger-text: #f2b6a5;
+  --c-danger-bg: #48271e;
+  --c-danger-line: #744331;
+  --c-notice-bg: #1e2718;
+  --c-banner-start: #24331c;
+  --c-banner-end: #1a2316;
+  --c-glow: #2c3723;
+  --c-highlight-bg: #232d1b;
+  --c-chart: #b4df70;
+  --c-chart-empty: #35452a;
+  --c-table-bg: #141811;
+  --c-row-line: #293023;
+  --c-code-bg: #0f130c;
+  --c-code-text: #c5dda9;
+  --c-reply-bg: #1d2617;
+  --c-user-bg: #1a1c18;
+  --c-violet-bg: #30273d;
+  --c-violet-line: #665580;
+  --c-selected-bg: #c5ee8410;
+  --c-readonly-bg: #ffffff05;
+  --c-drawer-shadow: #0008;
+  --c-primary-text: #17200c;
+  --c-primary-hover: #d7ffa0;
+  --c-accent: #c6f66b;
+  --c-violet: #a699e7;
+  --foreground: var(--c-text);
+  --background: var(--c-bg);
+  --lime: var(--c-accent);
+  --violet: var(--c-violet);
+  --c-panel-shadow: none;
+  color-scheme: dark;
+  scrollbar-color: var(--c-input-border) var(--c-bg);
+}
+
+.console[data-theme='light'] {
+  --c-bg: #f6f7f2;
+  --c-text: #253326;
+  --c-muted: #63705f;
+  --c-subtle: #5f6e58;
+  --c-label: #4b5d43;
+  --c-caption: #5d704f;
+  --c-secondary-text: #42553a;
+  --c-panel: #ffffff;
+  --c-sidebar: #eef1e8;
+  --c-line: #dde4d5;
+  --c-line-strong: #bfccb2;
+  --c-input-bg: #fdfefb;
+  --c-input-border: #899978;
+  --c-hover: #e4ebdb;
+  --c-active-bg: #e0eccf;
+  --c-active-line: #b6cba0;
+  --c-icon-bg: #eaf0e2;
+  --c-secondary-bg: #f0f5e9;
+  --c-secondary-hover: #e4eed9;
+  --c-badge-text: #56694a;
+  --c-success-bg: #edf5e3;
+  --c-success-line: #bdd2a6;
+  --c-warning-text: #8b6017;
+  --c-warning-line: #e6d3a6;
+  --c-warning-bg: #fff6e2;
+  --c-danger-text: #a03a28;
+  --c-danger-bg: #fff0ea;
+  --c-danger-line: #e4b9aa;
+  --c-notice-bg: #f0f5e9;
+  --c-banner-start: #eaf3dc;
+  --c-banner-end: #f7faf1;
+  --c-glow: #e4efd5;
+  --c-highlight-bg: #f0f6e7;
+  --c-chart: #789d48;
+  --c-chart-empty: #d9e3cf;
+  --c-table-bg: #f4f6f0;
+  --c-row-line: #e7ebdf;
+  --c-code-bg: #f1f5eb;
+  --c-code-text: #3c5730;
+  --c-reply-bg: #f2f7eb;
+  --c-user-bg: #f7f8f4;
+  --c-violet-bg: #f2edf9;
+  --c-violet-line: #cebfdf;
+  --c-selected-bg: #edf5e4;
+  --c-readonly-bg: #eef2e8;
+  --c-drawer-shadow: #26351a24;
+  --c-primary-text: #ffffff;
+  --c-primary-hover: #345522;
+  --c-accent: #426c2c;
+  --c-violet: #7751a8;
+  --c-panel-shadow: 0 2px 6px #25332605;
+  color-scheme: light;
+}
+
+:root[data-workspace-theme='light'] {
+  --background: #f6f7f2;
+  color-scheme: light;
+  scrollbar-color: #b8c4ac #f6f7f2;
+}
+
+:root[data-workspace-theme='dark'] {
+  color-scheme: dark;
+  scrollbar-color: #394132 #10120f;
+}
+
+.console ::selection {
+  background: var(--c-active-bg);
+  color: var(--c-text);
+}

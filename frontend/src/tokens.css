@@ -1,0 +1,9 @@
+:root {
+  color-scheme: dark;
+  --background: #10110f;
+  --foreground: #eeeee5;
+  --lime: #c6f66b;
+  --violet: #a699e7;
+  --line: #abb78c22;
+  --mono: 'DM Mono', monospace;
+}

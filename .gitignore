@@ -1,0 +1,73 @@
+# Local credentials and runtime state. Keep example configuration in source control.
+.env
+.env.*
+.envrc
+!.env.example
+.local/
+**/.secrets/
+keystores/
+*.keystore
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+*-private-key.txt
+private_key.txt
+mnemonic.txt
+seed-phrase.txt
+server-password
+*-password
+
+# Dependencies, build output and compiler caches; keep dependency lockfiles.
+node_modules/
+.cache/
+backend/bin/
+frontend/dist/
+frontend/artifacts/
+kusdc-console/dist/
+kusdc-console/artifacts/
+*.tsbuildinfo
+contracts/.toolchain/
+contracts/.deps/
+contracts/lib/
+contracts/out/
+contracts/cache/
+contracts/artifacts/
+
+# Deployment journals and local chain/account metadata are generated per environment.
+contracts/broadcast/
+contracts/reports/
+contracts/deployments/*.json
+contracts/deployments/**/*.json
+!contracts/deployments/.gitkeep
+
+# Database data, exports, logs and test/recording output. SQL migrations stay tracked.
+*.log
+*.pid
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.sql.gz
+dump.rdb
+appendonly.aof
+backups/
+dumps/
+coverage/
+coverage.out
+playwright-report/
+test-results/
+.playwright-mcp/
+
+# Generated videos, presentations, exports and unused logo proposals.
+/deliverables/
+/design/logo-concepts/
+
+# Editor and OS metadata.
+.DS_Store
+._*
+.idea/
+*.swp
+*.swo

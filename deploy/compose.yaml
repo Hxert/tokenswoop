@@ -1,0 +1,59 @@
+name: tokenswoop
+x-backend: &backend
+  build: ../backend
+  env_file: ../.env.local
+  environment:
+    LISTEN_ADDR: 0.0.0.0:8080
+    DATABASE_URL: postgres://tokenswoop:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}/tokenswoop?sslmode=disable
+    REDIS_URL: redis://redis:6379/0
+    PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:-http://localhost:8088}
+    TRUSTED_PROXY_CIDRS: 172.30.19.0/24
+    # Signer tooling and secret mounts are not part of this container skeleton.
+    SETTLEMENT_ENABLED: "false"
+  restart: unless-stopped
+  depends_on:
+    postgres: {condition: service_healthy}
+    redis: {condition: service_healthy}
+  networks: [internal]
+services:
+  postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: tokenswoop
+      POSTGRES_USER: tokenswoop
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+    volumes: [postgres-data:/var/lib/postgresql]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U tokenswoop -d tokenswoop"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+    networks: [internal]
+  redis:
+    image: redis:7-alpine
+    command: [redis-server, --save, "", --appendonly, "no"]
+    healthcheck:
+      test: [CMD, redis-cli, ping]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+    networks: [internal]
+  api:
+    <<: *backend
+  worker:
+    <<: *backend
+    entrypoint: [/app/worker]
+  web:
+    build: ../frontend
+    ports: ["127.0.0.1:8088:80"]
+    depends_on: [api]
+    restart: unless-stopped
+    networks: [internal]
+volumes:
+  postgres-data:
+networks:
+  internal:
+    ipam:
+      config: [{subnet: 172.30.19.0/24}]

@@ -1,0 +1,40 @@
+title = "TokenSwoop source-control secret checks"
+
+[extend]
+useDefault = true
+
+# Public EVM addresses are identifiers, not signing keys. This exact-length
+# exception cannot match a 32-byte private key, RPC credential or API token.
+[[allowlists]]
+description = "Public 20-byte EVM contract and wallet addresses"
+targetRules = ["generic-api-key"]
+regexTarget = "secret"
+regexes = ['''^0x[0-9a-fA-F]{40}$''']
+
+[[rules]]
+id = "tokenswoop-wallet-private-key"
+description = "Hard-coded 32-byte wallet signing key"
+regex = '''(?i)(?:private[_ -]?key|privkey|(?:deployer|operator|signer|wallet)[_-]?(?:key|secret))["'\s]*[:=]["'\s]*(0x[0-9a-f]{64}|[0-9a-f]{64})\b'''
+secretGroup = 1
+keywords = ["private", "privkey", "deployer", "operator", "signer", "wallet"]
+
+[[rules]]
+id = "tokenswoop-quicknode-credential"
+description = "Authenticated QuickNode endpoint embedded in source"
+regex = '''(?i)(?:https?|wss)://[a-z0-9.-]+\.quiknode\.pro/([a-z0-9_-]{20,})'''
+secretGroup = 1
+keywords = ["quiknode.pro"]
+
+[[rules]]
+id = "tokenswoop-turnstile-secret"
+description = "Cloudflare Turnstile server secret embedded in source"
+regex = '''(?i)turnstile[_-]secret[_-]key["'\s]*[:=]["'\s]*(0x4[a-z0-9_-]{25,})'''
+secretGroup = 1
+keywords = ["turnstile"]
+
+[[rules]]
+id = "tokenswoop-recovery-phrase"
+description = "Hard-coded wallet mnemonic or recovery phrase"
+regex = '''(?i)(?:mnemonic|seed[_ -]?phrase|recovery[_ -]?phrase)["'\s]*[:=]["'\s]*([a-z]{3,8}(?:[ \t]+[a-z]{3,8}){11,23})["'\r\n]'''
+secretGroup = 1
+keywords = ["mnemonic", "seed", "recovery"]

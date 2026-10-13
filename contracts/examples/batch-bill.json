@@ -1,0 +1,9 @@
+{
+  "billId": "0x0000000000000000000000000000000000000000000000000000000000000001",
+  "totalAmount": "0.0126",
+  "offchainRequests": [
+    {"requestId": "request-1", "amount": "0.0042"},
+    {"requestId": "request-2", "amount": "0.0042"},
+    {"requestId": "request-3", "amount": "0.0042"}
+  ]
+}

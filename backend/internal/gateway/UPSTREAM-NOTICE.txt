@@ -1,0 +1,11 @@
+Portions of model_modifier.go and model_suffix.go are adapted from New API:
+  relay/helper/model_modifier.go
+  relay/helper/reasoning_suffix.go
+  setting/reasoning/suffix.go
+Reference: 789c970199ea527e6a26e071915f4a4cd2c64178
+Source: https://github.com/QuantumNous/new-api
+Copyright and license: see ../../third_party/relaykit/NOTICE and LICENSE (AGPL-3.0).
+Changes: package/import wiring, channel-scoped suffix exemptions, standalone host
+metadata, and text-only postpaid limits. Reference checkout is read-only.
+Other gateway files integrate RelayKit's public APIs and implement TokenSwoop's
+own admission, transport, routing, validation, and billing rules.
